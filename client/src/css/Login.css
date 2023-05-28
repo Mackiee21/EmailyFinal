@@ -1,0 +1,40 @@
+h3{
+    text-align: center;
+    margin-top: 5rem;
+}
+form{
+    width: 30%;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 4px gray;
+    box-sizing: border-box;
+}
+label{
+    font-size: 1.025rem;
+    font-weight: 600;
+    flex: 1;
+}
+.input-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+input{
+    flex: 3;
+    font-size: 1rem;
+    padding: 0.4rem 0.6rem;
+}
+input:focus{
+    outline: none;
+}
+button{
+    display: block;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 1.7rem;
+    border: none;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+}
