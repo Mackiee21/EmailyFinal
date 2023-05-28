@@ -24,9 +24,7 @@
   require("./routes/authRoutes")(app);
  
   const port = process.env.PORT || 5174;
-  app.listen(port, () => {
-    console.log(`running on ${port}`)
-  });
+  app.listen(port);
   
   //hmWDj54mM657g7wa password  mongoDB atlas
 
