@@ -19,21 +19,19 @@ passport.use(new GoogleStrategy({
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback',
     proxy: true
-  }, (accessToken, refreshToken, profile, done) => { //=> this gets called after you click your profile (google)
-    User.findOne({ // SEARCH QUERY
-      googleID: profile.id
-    }).then(existingUser => {
-      if(existingUser){
-        //we already have a record with a given profile id
-        done(null, existingUser);
-      }else{//IF THERE'S NO USER FOUND ADD THIS
-        new User({
-          googleID: profile.id,
-          name: profile.displayName
-        }).save().then(user => done(null, user))
-         //save the user's google info to the database
-      }
-    })
+  }, 
+  async (accessToken, refreshToken, profile, done) => { //=> this gets called after you click your profile (google)
+    const existingUser = await User.findOne({ googleID: profile.id }) // SEARCH QUERY
+    if(existingUser){
+      //we already have a record with a given profile id
+      return done(null, existingUser);
+    }
+
+    const user = await new User({
+      googleID: profile.id,
+      name: profile.displayName
+    }).save(); //IF THERE'S NO USER FOUND, ADD THIS
+    done(null, user);
   })
 );
 //new GoogleStrategy() creates a new instance of google passport strategy
