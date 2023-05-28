@@ -7,7 +7,15 @@
   require("./services/passport");
   //common js modules
 
-  mongoose.connect(keys.mongoURI);
+  const connectDB = async () => {
+    try {
+      const conn = await mongoose.connect(process.env.MONGO_URI);
+      console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
+  }
 
   const app = express();
 
@@ -24,7 +32,11 @@
   require("./routes/authRoutes")(app);
  
   const port = process.env.PORT || 5174;
-  app.listen(port);
+  connectDB().then(() => {
+    app.listen(port, () => {
+        console.log("listening for requests");
+    })
+})
   
   //hmWDj54mM657g7wa password  mongoDB atlas
 
