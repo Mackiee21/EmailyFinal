@@ -19,6 +19,7 @@
 
   const app = express();
 
+
   app.use(cookieSession({
       maxAge: 30 * 24 * 60 * 60 * 1000, //how long the cookie last
       keys: [keys.cookieKey] // no idea meoww
