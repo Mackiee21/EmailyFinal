@@ -9,6 +9,9 @@ export default defineConfig({
       '/auth/google': {
         target: 'http://localhost:5174',
       },
+      "/data": {
+        target: "http://localhost:5174"
+      }
     },
   },
 })

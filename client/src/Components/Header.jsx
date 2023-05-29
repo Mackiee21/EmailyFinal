@@ -1,10 +1,22 @@
 import '../css/landing.css';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useNavigate} from 'react-router-dom';
+import { ConnectionClosedEvent } from 'mongodb';
 function Header() {
+    const [name, setName] = useState(null);
+
+    const getData = async () => {
+        const res = await axios.get('/data');
+        setName(res.data.name);
+    }
+
     return(
         <div className='container'>
             <div className='header'>
                 <h2 className="title-logo">Emaily</h2>
                 <ul className="sign-list">
+                    <a onClick={getData}>Show my name</a>
                     <a href='/login'>Login</a>
                     <a href='/auth/google'>Sign in with Google</a>
                 </ul>
@@ -12,6 +24,7 @@ function Header() {
 
 
             <h1 id='meow'>LANDING PAGE</h1>
+             {name && <h2 style={{"textAlign": "center", "display": "block"}}>Hi! {name}</h2>}
         </div>
     );
 }
