@@ -31,7 +31,7 @@
 
   app.use(passport.session());
   
-  app.use(express.static(path.join(__dirname, 'client', 'dist')));
+  app.use(express.static(path.join(__dirname, "client", "dist")));
 
   require("./routes/authRoutes")(app);
  
