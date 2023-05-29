@@ -33,12 +33,6 @@
   
   app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
-  app.get("*", (_, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'), (err) => {
-      res.status(500).send(err);
-    })
-  });
-
   require("./routes/authRoutes")(app);
  
   const port = process.env.PORT || 5174;
