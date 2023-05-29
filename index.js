@@ -31,7 +31,7 @@
 
   app.use(passport.session());
   
-  app.use(express.static(path.join(__dirname, './client/dist')));
+  app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
   app.get("*", (_, res) => {
     res.sendFile(path.join(__dirname, './client/dist/index.html'), (err) => {
