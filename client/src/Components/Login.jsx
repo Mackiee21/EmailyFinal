@@ -6,7 +6,7 @@ function Login() {
     const userPassword = useRef(null);
     const handleLogin = (e) => {
         e.preventDefault();
-        console.log(`Hi ${userEmail.current.value}`)
+        alert(`user ${userEmail.current.value} is added to Mackiee's database \nContact developer for deletion`);
     }
     return(
         <div id="container">
@@ -21,7 +21,8 @@ function Login() {
                     <input ref={userPassword} type="password" id="password" required />
                 </div>
                 <button type="submit">Login</button>
-                <a href="/auth/google">Log in with Google</a>
+                <p>or</p>
+                <a href="/auth/google" className='link-btn'>Log in with Google</a>
             </form>
         </div>
     );

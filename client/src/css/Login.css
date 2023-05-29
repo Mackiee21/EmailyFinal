@@ -1,11 +1,14 @@
 h3{
     text-align: center;
+    color: rgb(31, 136, 61);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
     margin-top: 5rem;
 }
 form{
     width: 30%;
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 3rem 1.8rem;
     border-radius: 0.25rem;
     box-shadow: 0 0 4px gray;
     box-sizing: border-box;
@@ -24,9 +27,11 @@ input{
     flex: 3;
     font-size: 1rem;
     padding: 0.4rem 0.6rem;
+    border: 1px solid grey;
 }
 input:focus{
-    outline: none;
+    outline: 1px solid goldenrod;
+    border: 1px solid goldenrod;
 }
 button{
     display: block;
@@ -37,4 +42,25 @@ button{
     border: none;
     padding: 0.6rem 1rem;
     cursor: pointer;
+    border-radius: 5px;
+}
+.link-btn{
+    text-decoration: none;
+    display: block;
+    margin-top: 1rem;
+    text-align: center;
+    transition: font-weight .025s;
+}
+.link-btn:visited{
+    color: black;
+}
+.link-btn:hover{
+    font-weight: 500;
+}
+p{
+    display: block;
+    text-align: center;
+    margin-top:  1rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
