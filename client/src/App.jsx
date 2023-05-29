@@ -1,14 +1,14 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Login from './Components/Login';
 import Header from './Components/Header';
 
 function App() {
     return(
-        <Routes>
+       <BrowserRouter>
             <Route path="/" element={<Header />} />
             <Route path='/login' element={<Login />} />
             <Route path='*' element={<h2>Page not Found</h2>} />
-        </Routes>
+        </BrowserRouter>
     );
 }
 export default App;
