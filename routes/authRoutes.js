@@ -25,11 +25,14 @@ module.exports = (app) => {
     });
 
     //HALAA MATAWAG RA D AY NI SIYA ONCE MO GET METHOD NATA SA DATA WHATTT
+    //MATAWAG RA NI SIYA IF NAA KAY EVENT HANDLER NA NAG request og GET or any method
+    //DLE D AY NI MATAWAG DAYON OI HAHAHAH
     app.get("/data", async (req, res) => {
       console.log("I AM RUNNING FIRST")
       const user = await User.findOne({name: "Mark Anthony Pandac"});
       res.json(user);
     });
+
 
     app.get("*", (_, res) => {
       res.sendFile(path.join(__dirname, "../client/dist/index.html"))

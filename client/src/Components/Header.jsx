@@ -1,11 +1,9 @@
 import '../css/landing.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
-import { ConnectionClosedEvent } from 'mongodb';
 function Header() {
     const [name, setName] = useState(null);
-
+    
     const getData = async () => {
         const res = await axios.get('/data');
         setName(res.data.name);

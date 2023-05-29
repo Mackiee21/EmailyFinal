@@ -11,7 +11,7 @@ export default defineConfig({
       },
       "/data": {
         target: "http://localhost:5174"
-      }
+      },
     },
   },
 })
