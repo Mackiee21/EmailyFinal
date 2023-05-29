@@ -1,4 +1,5 @@
   const express = require("express");
+  const path = require("path");
   const cookieSession = require('cookie-session');
   const passport = require('passport');
   const mongoose = require("mongoose");
@@ -30,6 +31,14 @@
 
   app.use(passport.session());
   
+  app.use(express.static(path.join(__dirname, './client/dist')));
+
+  app.get("*", (_, res) => {
+    res.sendFile(path.join(__dirname, './client/dist/index.html'), (err) => {
+      res.status(500).send(err);
+    })
+  });
+
   require("./routes/authRoutes")(app);
  
   const port = process.env.PORT || 5174;
