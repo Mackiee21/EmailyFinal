@@ -14,7 +14,6 @@ function Header() {
             <div className='header'>
                 <h2 className="title-logo">Emaily</h2>
                 <ul className="sign-list">
-                    <a onClick={getData}>Show my name</a>
                     <a href='/login'>Login</a>
                     <a href='/auth/google'>Sign in with Google</a>
                 </ul>
