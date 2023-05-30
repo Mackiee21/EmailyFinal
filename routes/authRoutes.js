@@ -14,7 +14,7 @@ module.exports = (app) => {
 
     app.get('/logout', (req, res) => {
       req.logout()
-      res.send("You have successfully logged out");
+      res.redirect("/");
     })
     app.get('/home', (req, res) => {
       if(req.user){

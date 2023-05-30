@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 function Header() {
     const [name, setName] = useState(null);
+    const [login, setLogin] = useState(false);
 
     useEffect(() => {
         getData();
@@ -12,9 +13,10 @@ function Header() {
         const res = await axios.get('/data');
         if(res.data){
             setName(res.data.name);
+            setLogin(true);
         }
         else{
-            setName("anonymous")
+            setName("Anonymous")
         }
     }
 
@@ -23,8 +25,9 @@ function Header() {
             <div className='header'>
                 <h2 className="title-logo">Emaily</h2>
                 <ul className="sign-list">
-                    <a href='/login'>Login</a>
-                    <a href='/auth/google'>Sign in with Google</a>
+                    {!login && <a href='/login'>Login</a>}
+                    {!login && <a href='/auth/google'>Sign in with Google</a>}
+                    {login && <a href="/logout">Logout</a>}
                 </ul>
             </div> {/* END OF HEADER */}
 
