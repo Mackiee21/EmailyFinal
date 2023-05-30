@@ -8,8 +8,8 @@ module.exports = (app) => {
       })
     );
     app.get('/auth/google/callback', passport.authenticate('google', {
-      successRedirect: '/home',
-      failureRedirect: '/'
+      successRedirect: '/',
+      failureRedirect: '/login'
     }));
 
     app.get('/logout', (req, res) => {
@@ -18,18 +18,19 @@ module.exports = (app) => {
     })
     app.get('/home', (req, res) => {
       if(req.user){
-        res.send(`${req.user.name} you are still logged in`);
+        res.send(`${req.user.name} you are now logged in`);
       }else{
         res.send("Please log in first!");
       }
     });
 
+    
     //HALAA MATAWAG RA D AY NI SIYA ONCE MO GET METHOD NATA SA DATA WHATTT
     //MATAWAG RA NI SIYA IF NAA KAY EVENT HANDLER NA NAG request og GET or any method
     //DLE D AY NI MATAWAG DAYON OI HAHAHAH
     app.get("/data", async (req, res) => {
-      console.log("I AM RUNNING FIRST")
-      const user = await User.findOne({name: "Mark Anthony Pandac"});
+      console.log("I AM RUNNING FIRST", req.user)
+      const user = await User.findById(req.user);
       res.json(user);
     });
 
