@@ -1,5 +1,4 @@
   const express = require("express");
-  const cors = require("cors");
   const path = require("path");
   const cookieSession = require('cookie-session');
   const passport = require('passport');
@@ -21,7 +20,6 @@
 
   const app = express();
   
-  app.use(cors());
 
   app.use(cookieSession({
       maxAge: 30 * 24 * 60 * 60 * 1000, //how long the cookie last
