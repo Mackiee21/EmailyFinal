@@ -1,7 +1,8 @@
 import '../css/landing.css';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 function Header() {
+    const p = useRef();
     const [name, setName] = useState(null);
     const [login, setLogin] = useState(false);
 
@@ -10,14 +11,16 @@ function Header() {
     }, [])
     
     const getData = async () => {
+        p.current.innerText = "LOADING..."
         const res = await axios.get('/data');
         if(res.data){
-            setName(res.data.name);
             setLogin(true);
+            setName(res.data.name);
         }
         else{
             setName("Anonymous")
         }
+        p.current.innerText = "LANDING PAGE";
     }
 
     return(
@@ -32,7 +35,7 @@ function Header() {
             </div> {/* END OF HEADER */}
 
 
-            <h1 id='meow'>LANDING PAGE</h1>
+            <h1 ref={p} id='meow'>LANDING PAGE</h1>
              {name && <h2 style={{"textAlign": "center", "display": "block"}}>Hi! {name}</h2>}
         </div>
     );
