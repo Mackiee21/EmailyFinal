@@ -1,27 +1,45 @@
 import '../css/landing.css';
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
+import { useIsLoginQuery} from '../store';
 function Header() {
     const p = useRef();
+    const { data, error, isFetching} = useIsLoginQuery();
     const [name, setName] = useState(null);
     const [login, setLogin] = useState(false);
 
-    useEffect(() => {
-        getData();
-    }, [])
     
-    const getData = async () => {
-        p.current.innerText = "LOADING..."
-        const res = await axios.get('/data');
-        if(res.data){
-            setLogin(true);
-            setName(res.data.name);
+    useEffect(() => {
+        if(isFetching){
+            p.current.innerText = "LOADING..."
+        }else if(error){
+            p.current.innerText = "ERROR FETCHING DATA";
+            console.log(error);
+        }else{
+            p.current.innerText = "LANDING PAGE";
+            if(data){
+                setLogin(true);
+                setName(data.name);
+            }else{
+                setLogin(false);
+                setName("Anonymous");
+            }
         }
-        else{
-            setName("Anonymous")
-        }
-        p.current.innerText = "LANDING PAGE";
-    }
+        //getData();
+    }, [data, error, isFetching]);
+
+    // const getData = async () => {
+    //     p.current.innerText = "LOADING..."
+    //     const res = await axios.get('/data');
+    //     if(res.data){
+    //         setLogin(true);
+    //         setName(res.data.name);
+    //     }
+    //     else{
+    //         setName("Anonymous")
+    //     }
+    //     p.current.innerText = "LANDING PAGE";
+    // }
 
     return(
         <div className='container'>

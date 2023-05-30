@@ -1,16 +1,23 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const authReducerApi = createApi({
-    reducerPath: '',
+    reducerPath: "user",
     baseQuery: fetchBaseQuery({
-        baseUrl: '127.0.0.1:3000' || 'https://emailyapp.cyclic.app',
+        baseUrl: 'http://localhost:5174' || 'https://emailyapp.cyclic.app',
     }),
     endpoints(builder){
         return {
-            
+            isLogin: builder.query({
+                query: () => {
+                    return {
+                        url: '/data',
+                        method: 'GET'
+                    }
+                }
+            })
         }
     }
 });
 
-
+export const  { useIsLoginQuery } = authReducerApi;
 export { authReducerApi };
