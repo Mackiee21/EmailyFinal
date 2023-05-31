@@ -6,32 +6,26 @@ function Header() {
     const { data, error, isFetching} = useIsLoginQuery();
     const [name, setName] = useState(null);
     const [login, setLogin] = useState(false);
-
+    
     useEffect(() => {
-        fetchData();
+            if(isFetching){
+                p.current.innerText = "LOADING..."
+            }else if(error){
+                p.current.innerText = "ERROR FETCHING DATA";
+                console.log(error);
+            }else{
+                p.current.innerText = "LANDING PAGE";
+                console.log(data)
+                if(data){
+                    setLogin(true);
+                    setName(data.name);
+                }else{
+                    setLogin(false);
+                    setName("Anonymous");
+                }
+            }
          //getData();
      }, [data, error, isFetching]);
-
-    const fetchData = () => {
-        if(isFetching){
-            p.current.innerText = "LOADING..."
-        }else if(error){
-            p.current.innerText = "ERROR FETCHING DATA";
-            console.log(error);
-        }else{
-            p.current.innerText = "LANDING PAGE";
-            console.log(data)
-            if(data){
-                setLogin(true);
-                setName(data.name);
-            }else{
-                setLogin(false);
-                setName("Anonymous");
-            }
-        }
-    }
-    
-
 
     // const getData = async () => {
     //     p.current.innerText = "LOADING..."
@@ -59,7 +53,7 @@ function Header() {
 
 
             <h1 ref={p} id='meow'>LANDING PAGE</h1>
-            {error && <button onClick={fetchData} >Retry</button>}
+            {error && <a href="/data">Retry</a>}
              {name && <h2 style={{"textAlign": "center", "display": "block"}}>Hi! {name}</h2>}
         </div>
     );
