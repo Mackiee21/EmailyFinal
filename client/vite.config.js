@@ -12,6 +12,9 @@ export default defineConfig({
       "/data": {
         target: "http://localhost:5174"
       },
+      "/logout": {
+        target: "http://localhost:5174"
+      }
     },
   },
 })

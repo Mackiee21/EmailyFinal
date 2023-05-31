@@ -1,5 +1,4 @@
 import '../css/landing.css';
-import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
 import { useIsLoginQuery} from '../store';
 function Header() {
@@ -17,6 +16,7 @@ function Header() {
             console.log(error);
         }else{
             p.current.innerText = "LANDING PAGE";
+            console.log(data)
             if(data){
                 setLogin(true);
                 setName(data.name);
@@ -46,8 +46,8 @@ function Header() {
             <div className='header'>
                 <h2 className="title-logo">Emaily</h2>
                 <ul className="sign-list">
-                    {!login && <a href='/login'>Login</a>}
-                    {!login && <a href='/auth/google'>Sign in with Google</a>}
+                    {!login && <a href="/login">Login</a>}
+                    {!login && <a href="/auth/google">Sign in with Google</a>}
                     {login && <a href="/logout">Logout</a>}
                 </ul>
             </div> {/* END OF HEADER */}

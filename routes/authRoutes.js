@@ -29,11 +29,10 @@ module.exports = (app) => {
     //MATAWAG RA NI SIYA IF NAA KAY EVENT HANDLER NA NAG request og GET or any method
     //DLE D AY NI MATAWAG DAYON OI HAHAHAH
     app.get("/data", async (req, res) => {
-      console.log("I AM RUNNING FIRST", req.user)
+      console.log("I AM RUNNING FIRST", req.user);
       const user = await User.findById(req.user);
       res.json(user);
     });
-
 
     app.get("*", (_, res) => {
       res.sendFile(path.join(__dirname, "../client/dist/index.html"))
