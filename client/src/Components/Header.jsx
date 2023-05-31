@@ -1,17 +1,20 @@
 import '../css/landing.css';
 import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import { useIsLoginQuery} from '../store';
 function Header() {
     const p = useRef();
     const { data, error, isFetching} = useIsLoginQuery();
     const [name, setName] = useState(null);
     const [login, setLogin] = useState(false);
+    const [fetchError, setFetchError] = useState(false);
     
     useEffect(() => {
             if(isFetching){
                 p.current.innerText = "LOADING..."
             }else if(error){
                 p.current.innerText = "ERROR FETCHING DATA";
+                setFetchError(true);
                 console.log(error);
             }else{
                 p.current.innerText = "LANDING PAGE";
@@ -27,18 +30,19 @@ function Header() {
          //getData();
      }, [data, error, isFetching]);
 
-    // const getData = async () => {
-    //     p.current.innerText = "LOADING..."
-    //     const res = await axios.get('/data');
-    //     if(res.data){
-    //         setLogin(true);
-    //         setName(res.data.name);
-    //     }
-    //     else{
-    //         setName("Anonymous")
-    //     }
-    //     p.current.innerText = "LANDING PAGE";
-    // }
+    const getData = async () => {
+        setFetchError(false)
+        p.current.innerText = "LOADING..."
+        const res = await axios.get('/data');
+        if(res.data){
+            setLogin(true);
+            setName(res.data.name);
+        }
+        else{
+            setName("Anonymous")
+        }
+        p.current.innerText = "LANDING PAGE";
+    }
 
     return(
         <div className='container'>
@@ -53,7 +57,7 @@ function Header() {
 
 
             <h1 ref={p} id='meow'>LANDING PAGE</h1>
-            {error && <a href="/data">Retry</a>}
+            {fetchError && <button onClick={getData}>Retry</button> }
              {name && <h2 style={{"textAlign": "center", "display": "block"}}>Hi! {name}</h2>}
         </div>
     );
