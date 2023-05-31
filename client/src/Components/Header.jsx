@@ -7,8 +7,12 @@ function Header() {
     const [name, setName] = useState(null);
     const [login, setLogin] = useState(false);
 
-    
     useEffect(() => {
+        fetchData();
+         //getData();
+     }, [data, error, isFetching]);
+
+    const fetchData = () => {
         if(isFetching){
             p.current.innerText = "LOADING..."
         }else if(error){
@@ -25,8 +29,9 @@ function Header() {
                 setName("Anonymous");
             }
         }
-        //getData();
-    }, [data, error, isFetching]);
+    }
+    
+
 
     // const getData = async () => {
     //     p.current.innerText = "LOADING..."
@@ -54,6 +59,7 @@ function Header() {
 
 
             <h1 ref={p} id='meow'>LANDING PAGE</h1>
+            {error && <button onClick={fetchData} >Retry</button>}
              {name && <h2 style={{"textAlign": "center", "display": "block"}}>Hi! {name}</h2>}
         </div>
     );
