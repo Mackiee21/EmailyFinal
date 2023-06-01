@@ -47,9 +47,8 @@ function ConfirmSurveyPage() {
                     <p>{about}</p>
                 </div>
                 {renderedQuestions}
-                <div className='btn-wrapper'>
-                    <button onClick={() => navigate(-1)}>Back</button>
-                    <button onClick={handleClickNext}>Create and Submit</button>
+                <div className='btn-wrapper btn-wrapper--single'>
+                    <button className='create-submit-btn' onClick={handleClickNext}>Create and Submit</button>
                 </div>
             </form>
         </div>

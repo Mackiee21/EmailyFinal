@@ -66,21 +66,10 @@
     align-items: center;
     margin-top: 2rem;
 }
-.btn-wrapper button, a {
+.btn-wrapper button {
     margin: 0;
 }
 
-.btn-wrapper a{
-    background-color: rgb(240, 240, 240);
-    padding: 0.5rem 0.8rem;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 3px;
-    color: black;
-}
-.btn-wrapper :visited{
-    color: black;
-}
 
 /*APPLIED FOR THE CONFIRM SURVEY PAGE*/
 p{
@@ -99,3 +88,6 @@ h4{
     font-weight: 500;
     margin-bottom: .5rem;
 }
+.btn-wrapper--single {
+    justify-content: flex-end;
+  }
