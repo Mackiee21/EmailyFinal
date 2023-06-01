@@ -90,4 +90,11 @@ h4{
 }
 .btn-wrapper--single {
     justify-content: flex-end;
-  }
+}
+
+@media (max-width: 600px){
+    .form-wrapper{
+        width: 100%;
+        padding: 1rem 1.5rem;
+    }
+}
