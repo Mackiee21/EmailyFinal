@@ -1,0 +1,101 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.form-wrapper{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    box-shadow: 0 0 3px grey;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+}
+.survey-form{
+    width: 100%;
+    box-shadow: none;
+    padding: unset;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+}
+.container input {
+    height: auto;
+    min-height: 3rem;
+}
+.container label:nth-child(1){
+    margin-top: 1rem;
+}
+.form-header{
+    margin: 1rem;
+}
+
+.question-container{
+    display: flex;
+    margin-top: 2rem;
+    gap: 10px;
+    align-items: center;
+}
+
+.question-container textarea {
+    flex: 10;
+    min-height: 4rem;
+    padding: 1rem;
+    font-size:1rem;
+    resize: none;
+}
+.question-container textarea:focus{
+    outline:none;
+}
+.question-container button{
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 500;
+    padding: 1rem;
+    flex: 1;
+    align-self: center;
+}
+
+.btn-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+.btn-wrapper button, a {
+    margin: 0;
+}
+
+.btn-wrapper a{
+    background-color: rgb(240, 240, 240);
+    padding: 0.5rem 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 3px;
+    color: black;
+}
+.btn-wrapper :visited{
+    color: black;
+}
+
+/*APPLIED FOR THE CONFIRM SURVEY PAGE*/
+p{
+    border: 1px solid black;
+    padding: 1rem;
+    font-weight: 400;
+    text-align: left;
+    margin: 0;
+}
+
+.question{
+    margin-top: 1rem;
+}
+
+h4{
+    font-weight: 500;
+    margin-bottom: .5rem;
+}

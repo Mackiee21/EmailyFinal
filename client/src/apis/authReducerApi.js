@@ -15,10 +15,19 @@ const authReducerApi = createApi({
                     }
                 }
             }),
+            surveyDetails: builder.mutation({
+                query: (data) => {
+                    return {
+                        url: '/survey/data/temp',
+                        method: 'POST',
+                        body: data
+                    }
+                }
+            })
 
         }
     }
 });
 
-export const  { useIsLoginQuery } = authReducerApi;
+export const  { useIsLoginQuery, useSurveyDetailsMutation } = authReducerApi;
 export { authReducerApi };

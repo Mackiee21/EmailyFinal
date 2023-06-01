@@ -14,6 +14,9 @@ export default defineConfig({
       },
       "/logout": {
         target: "http://localhost:5174"
+      },
+      "survey/data/temp": {
+        target: "http://localhost:5174"
       }
     },
   },

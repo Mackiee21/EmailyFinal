@@ -6,6 +6,7 @@
   const mongoose = require("mongoose");
   const keys = require("./config/keys");
   require("./models/User");
+  require("./models/Surveys");
   require("./services/passport");
   //common js modules
 
@@ -21,6 +22,10 @@
 
   const app = express();
   app.use(cors());
+  //middleware for parsing the data from a post method
+  app.use(express.json());
+  //middleware for submitting form (post method)
+  app.use(express.urlencoded({extended: false}));
 
   app.use(cookieSession({
       maxAge: 30 * 24 * 60 * 60 * 1000, //how long the cookie last
@@ -31,14 +36,15 @@
   app.use(passport.initialize());
 
   app.use(passport.session());
-  
+ 
+  //send whatever file that matches the route in dist folder
   app.use(express.static(path.join(__dirname, "client", "dist")));
 
   require("./routes/authRoutes")(app);
  
   const port = process.env.PORT || 5174;
   connectDB().then(() => {
-    app.listen(port, () => {
+     app.listen(port, () => {
         console.log("listening for requests");
     })
 })
