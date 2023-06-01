@@ -25,7 +25,7 @@ function SurveyPage() {
     const handleClickNext = (e) => {
         if(questionField === 1){
             e.preventDefault();
-            alert("You cannot proceed yet!")
+            alert("Please fill out the form and provide at least one question. Thank you")
         }else{
             setTimeout(() => {
                 const data = {
