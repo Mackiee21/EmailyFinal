@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../css/MySurveys.css';
 
 function MySurveys() {
     const [fetching, setFetching] = useState("getting");
     const [data, setData] = useState([]);
-
     useEffect(() => {
         fetchSurveys();
     }, []);
@@ -22,15 +22,22 @@ function MySurveys() {
 
         }
     };
+    let className;
     let content;
     if(fetching === 'getting'){
-        content = <h3>FETCHING DATA...</h3>
+        content = <div class="d-flex justify-content-center align-items-center">
+                        <div class="spinner-border text-success mr-2" role="status">
+                            <span class="sr-only">Loading...</span>
+                    </div>
+                    <span>Fetching data...</span>
+                </div>
     }else if("okaynabes"){
+        className = 'survey-wrapper';
         content = data?.map((survey, index) => {
                 return( 
                     <div key={index}>
-                        <h1>{survey.survey.header}</h1>
-                        <p>{survey.survey.about}</p>
+                        <h1 className='header'>{survey.survey.header}</h1>
+                        <p className='about'>{survey.survey.about}</p>
                     </div>
                 );
             })
@@ -38,7 +45,7 @@ function MySurveys() {
         content = <h1>ERROR FETCHING DATA</h1>
     }
     return(
-        <div>{content}</div>
+        <div className={className}>{content}</div>
     );
 
 }

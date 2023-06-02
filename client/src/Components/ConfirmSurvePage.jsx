@@ -7,6 +7,7 @@ function ConfirmSurveyPage() {
     const navigate = useNavigate();
     const btnRef = useRef();
     const [data, setData] = useState({});
+    const [loading, setLoading] = useState(false);
     
     const getData = useCallback(async () => {
         const res = await axios.get('/survey-data');
@@ -33,12 +34,21 @@ function ConfirmSurveyPage() {
 
     const handleClickNext = async (e) => {
         e.preventDefault();
-        btnRef.current.innerText = "Creating...";
+        setLoading(true);
         const res = await axios.post('/save', data);
         if(res.status == 200){
             navigate('/');
-            btnRef.current.innerText = "Create and Submit";
+            setLoading(false);
         }
+    }
+    let button;
+    if(loading){
+        button = <button class="btn btn-primary d-flex align-items-center" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+                    Creating...
+                </button>
+    }else{
+        button = <button className='create-submit-btn btn btn-primary' onClick={handleClickNext}>Create and Submit</button>
     }
     return(
         <div className='form-wrapper'>
@@ -54,7 +64,7 @@ function ConfirmSurveyPage() {
                 </div>
                 {renderedQuestions}
                 <div className='btn-wrapper btn-wrapper--single'>
-                    <button ref={btnRef} className='create-submit-btn' onClick={handleClickNext}>Create and Submit</button>
+                    {button}
                 </div>
             </form>
         </div>

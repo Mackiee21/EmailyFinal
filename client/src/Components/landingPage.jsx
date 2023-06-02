@@ -21,7 +21,7 @@ function LandingPage() {
     return(
         <div>
              <h1 id='meow'>{sign}</h1>
-             {name && <h2 style={{"textAlign": "center", "display": "block"}}>Hi! {name}</h2>}
+             {name && <h2 className='user' style={{"textAlign": "center", "display": "block"}}>Hi! {name}</h2>}
         </div>
     );
 }

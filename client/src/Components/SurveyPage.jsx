@@ -54,7 +54,7 @@ function SurveyPage() {
     const renderedQuestionFields = Array.from({length: questionField}).map((_, index) => {
         return(
             <div  key={index} className='question-container'>
-                <textarea></textarea>
+                <textarea placeholder='Click "Save" to save each individual question'></textarea>
                 <button onClick={handleAddQuestion}>Save</button>
             </div>
         ); 

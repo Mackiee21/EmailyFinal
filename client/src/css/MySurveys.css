@@ -1,0 +1,28 @@
+.survey-wrapper{
+    width: 50%;
+    margin: 2.5rem auto;
+    border: 1px solid black;
+    padding: 1.2rem;
+    border: 1px solid grey;
+    box-shadow: 0 0 5px grey;
+}
+
+.survey-wrapper .header {
+    font-size: 1.1rem;
+    text-align: center;
+    display: block;
+    margin-bottom: 0.7rem;
+}
+
+.survey-wrapper .about{
+    box-shadow: 0 0 3px grey;
+    border: none;
+    margin-bottom: 1.3rem;
+}
+
+@media (max-width: 600px) {
+    .survey-wrapper {
+        width: 90%;
+    }
+    
+}
