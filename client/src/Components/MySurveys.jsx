@@ -1,9 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function MySurveys() {
     const [fetching, setFetching] = useState("fetching");
     const [data, setData] = useState([]);
+
     useEffect(() => {
         fetchSurveys();
     }, []);
