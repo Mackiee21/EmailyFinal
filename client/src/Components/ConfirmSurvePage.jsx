@@ -35,7 +35,7 @@ function ConfirmSurveyPage() {
         e.preventDefault();
         btnRef.current.innerText = "Creating...";
         const res = await axios.post('/save', data);
-        if(res.statusText === 'OK'){
+        if(res.status == 200){
             navigate('/');
             btnRef.current.innerText = "Create and Submit";
         }

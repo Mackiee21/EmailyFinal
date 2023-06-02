@@ -12,7 +12,7 @@ function MySurveys() {
     const fetchSurveys = async () => {
         const res = await axios.get('/getSurveys');
         console.log("result: ", res);
-        if(res.statusText === 'OK'){
+        if(res.status == 200){
             setFetching("okaynabes");
             setData(res.data);
             console.log("data",res.data)
