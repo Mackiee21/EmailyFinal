@@ -8,10 +8,12 @@ function Header() {
     const [menuStyle, setMenuStyle] = useState('fa fa-bars');
     
     useEffect(() => {
-        const listClick = (e) => {
-            e.preventDefault();
+        const listClick = () => {
             if(window.innerWidth <= 600){
-                listRef.current.style.display = "none";
+                listRef.current.style.transform = "translateX(-100%)";
+                listRef.current.style.transition = "none";
+                setMenuStyle('fa fa-bars');
+
             }
         }
         Array.from(listRef.current.children).forEach(child => {
@@ -21,7 +23,7 @@ function Header() {
       return () => {
         listRef.current.removeEventListener('click', listClick);
       }
-     }, []);
+     }, [menuStyle]);
 
     const getData = async () => {
         const res = await axios.get('/data');
@@ -35,6 +37,7 @@ function Header() {
             listRef.current.style.transform = "translateX(-100%)";
             setMenuStyle('fa fa-bars');
         }else{
+            listRef.current.style.transition = "transform 0.4s ease-out";
             listRef.current.style.transform = "translateX(0)";
             setMenuStyle('fa fa-close');
         }
