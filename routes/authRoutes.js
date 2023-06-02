@@ -66,6 +66,13 @@ module.exports = (app) => {
         res.send("Saved and session cleared")
     })
 
+    app.get('/getSurveys', async (req, res) => {
+      console.log("user id", req.session.passport.user);
+        const surveys = await Survey.find({user: req.session.passport.user});
+        console.log("user surveys: ", surveys)
+        res.json(surveys);
+    });
+
     app.get("*", (_, res) => {
       res.sendFile(path.join(__dirname, "../client/dist/index.html"))
     });

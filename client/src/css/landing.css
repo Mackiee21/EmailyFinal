@@ -24,7 +24,7 @@
 .sign-list{
     margin: 1rem 2rem 1rem;
 }
-.sign-list  a {
+.sign-list  a, .link {
     display: inline-block;
     margin-left: 1.6rem;
     font-size: 1rem;
@@ -32,13 +32,14 @@
     list-style-type: none;
     padding: 0.2em;
     cursor: pointer;
+    color: black;
 }
-.sign-list a:visited {
+.sign-list a:visited, .link:visited {
     color: black;
 }
 .sign-list a:hover{
     font-weight: 500;
-    margin-left: 1.3rem;
+    margin-left: 1.325rem;
 }
 #meow{
     font-size: 5rem;

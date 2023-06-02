@@ -23,7 +23,8 @@ function Header() {
                 <ul className="sign-list">
                     {!login && <a href="/login">Login</a>}
                     {!login && <a href="/auth/google">Sign in with Google</a>}
-                    {login && <Link to="survey/new">Create Survey</Link>}
+                    {login && <Link className='link' to="survey/new">Create Survey</Link>}
+                    {login && <Link className='link' to='surveys'>My Surveys</Link>}
                     {login && <a href="/logout">Logout</a>}
                 </ul>
             </div> {/* END OF HEADER */}

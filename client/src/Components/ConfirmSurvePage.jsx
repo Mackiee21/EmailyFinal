@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState, useRef } from 'react';
 import '../css/survey.css'
 import {useNavigate} from 'react-router-dom';
 
 function ConfirmSurveyPage() {
     const navigate = useNavigate();
+    const btnRef = useRef();
     const [data, setData] = useState({});
     const getData = useCallback(async () => {
         const res = await axios.get('/survey-data');
@@ -31,8 +32,12 @@ function ConfirmSurveyPage() {
 
     const handleClickNext = async (e) => {
         e.preventDefault();
-        await axios.post('/save', data);
-        navigate('/');
+        btnRef.current.innerText = "Creating...";
+        const res = await axios.post('/save', data);
+        if(res.statusText === 'OK'){
+            navigate('/');
+            btnRef.current.innerText = "Create and Submit";
+        }
     }
     return(
         <div className='form-wrapper'>
@@ -48,7 +53,7 @@ function ConfirmSurveyPage() {
                 </div>
                 {renderedQuestions}
                 <div className='btn-wrapper btn-wrapper--single'>
-                    <button className='create-submit-btn' onClick={handleClickNext}>Create and Submit</button>
+                    <button ref={btnRef} className='create-submit-btn' onClick={handleClickNext}>Create and Submit</button>
                 </div>
             </form>
         </div>
