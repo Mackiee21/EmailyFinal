@@ -8,7 +8,19 @@ function Header() {
     const [menuStyle, setMenuStyle] = useState('fa fa-bars');
     
     useEffect(() => {
+        const listClick = (e) => {
+            e.preventDefault();
+            if(window.innerWidth <= 600){
+                listRef.current.style.display = "none";
+            }
+        }
+        Array.from(listRef.current.children).forEach(child => {
+            child.addEventListener('click', listClick )
+        })
       getData();
+      return () => {
+        listRef.current.removeEventListener('click', listClick);
+      }
      }, []);
 
     const getData = async () => {
