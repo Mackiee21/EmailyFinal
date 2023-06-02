@@ -63,7 +63,7 @@ module.exports = (app) => {
           user: req.session.passport.user,
           survey: req.body
         }).save();
-        res.send("Saved and session cleared")
+        res.send(survey + "Saved and session cleared")
     })
 
     app.get('/getSurveys', async (req, res) => {

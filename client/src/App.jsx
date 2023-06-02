@@ -1,4 +1,4 @@
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Login from './Components/Login';
 import Header from './Components/Header';
 import SurveyPage from './Components/SurveyPage';

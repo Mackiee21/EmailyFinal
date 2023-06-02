@@ -1,12 +1,13 @@
-import axios from 'axios';
 import { useEffect, useCallback, useState, useRef } from 'react';
-import '../css/survey.css'
 import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
+import '../css/survey.css'
 
 function ConfirmSurveyPage() {
     const navigate = useNavigate();
     const btnRef = useRef();
     const [data, setData] = useState({});
+    
     const getData = useCallback(async () => {
         const res = await axios.get('/survey-data');
         if(res.data){

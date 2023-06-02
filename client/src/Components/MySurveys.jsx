@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function MySurveys() {
-    const [fetching, setFetching] = useState("fetching");
+    const [fetching, setFetching] = useState("getting");
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -12,18 +12,20 @@ function MySurveys() {
     const fetchSurveys = async () => {
         const res = await axios.get('/getSurveys');
         if(res.statusText === 'OK'){
-            setFetching("success");
+            setFetching("okaynabes");
             setData(res.data);
-            console.log(res.data)
+            console.log("data",res.data)
         }else{
             setFetching("error");
+            console.log("error: ")
+
         }
     };
     let content;
-    if(fetching === 'fetching'){
+    if(fetching === 'getting'){
         content = <h3>FETCHING DATA...</h3>
-    }else if('success'){
-        content = data.map((survey, index) => {
+    }else if("okaynabes"){
+        content = data?.map((survey, index) => {
                 return( 
                     <div key={index}>
                         <h1>{survey.survey.header}</h1>
