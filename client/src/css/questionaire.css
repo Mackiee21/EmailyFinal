@@ -1,0 +1,68 @@
+.questionaire-wrapper {
+  border: 1px solid grey;
+  border-top: 2px solid green;
+  width: 55%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 0.225rem;
+}
+.questionaire-wrapper * {
+  display: default;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+  font-weight: normal;
+}
+.questionaire-wrapper h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+.questionaire-wrapper .header {
+  width: 100%;
+  max-width: 650px;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.questionaire-wrapper .header p:nth-child(1) {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.questionaire-wrapper form {
+  margin-top: 1rem;
+  width: 100%;
+}
+.questionaire-wrapper form div {
+  margin-bottom: 0.8rem;
+}
+.questionaire-wrapper form h2 {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+.questionaire-wrapper form textarea {
+  width: 100%;
+  resize: none;
+  border: 1px solid grey;
+  border-radius: 0.25rem;
+  padding: 0.3rem 0.5rem;
+}
+.questionaire-wrapper form textarea:is(:focus) {
+  outline: none;
+}
+.questionaire-wrapper form button {
+  margin-left: auto;
+  padding: 0.4rem 0.7rem;
+  font-weight: 600;
+  font-size: 0.87rem;
+}
+@media (max-width: 600px) {
+  .questionaire-wrapper {
+    width: 90%;
+  }
+}

@@ -24,8 +24,8 @@ function MySurveys() {
     };
     let content;
     if(fetching === 'getting'){
-        content = <div className='d-flex justify-content-center align-items-center m-0' style={{"min-height": "88vh"}}>
-                    <div className="d-flex justify-content-center align-items-center mt-0">
+        content = <div className='d-flex justify-content-center align-items-center m-0' style={{"min-height": "100vh"}}>
+                    <div className="d-flex justify-content-center align-items-center mt-4">
                         <div className="spinner-border text-primary mr-2" role="status">
                             <span className="sr-only">Loading...</span>
                         </div>

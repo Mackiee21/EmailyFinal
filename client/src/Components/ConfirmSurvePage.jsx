@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useState, useRef } from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import '../css/survey.css'
+import  '../css/survey.css';
 
 function ConfirmSurveyPage() {
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ function ConfirmSurveyPage() {
     const {header, about, questions} = data;
 
     const renderedQuestions = questions?.map((question, index) => {
-        return <div className='question' key={index}>
+        return <div className="question" key={index}>
             <h4>Question {index+1}</h4>
             <p>{question}</p>
         </div>

@@ -1,0 +1,77 @@
+.questionaire-wrapper{
+    border: 1px solid grey;
+    border-top: 2px solid green;
+    width: 55%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: .225rem;
+    // display: grid;
+    // place-items: center;
+    //setting the styling back to default kai since naapektohan sa uban kapoy nag revise mewow
+    * {
+       display: default;
+       margin: 0;
+       padding: 0;
+       text-decoration: none;
+       border: none;
+       box-shadow: none;
+       font-weight: normal;
+    }
+
+    h1{
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+    }
+    .header{
+        width: 100%;
+        max-width: 650px;
+        margin-inline: auto;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        p:nth-child(1){
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+    }
+
+    form{
+        margin-top: 1rem;
+        width: 100%;
+        div{
+            margin-bottom: 0.8rem;
+            // counter-reset: question-counter;
+        }
+        h2{
+            font-weight: 400;
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+        }
+        // h2::before{
+        //     counter-increment: question-counter;
+        //     content: counter(question-counter) ". ";
+        // }
+        textarea{
+            width: 100%;
+            resize: none;
+            border: 1px solid grey;
+            border-radius: 0.25rem;
+            padding: 0.3rem 0.5rem;
+        }
+        textarea:is(:focus){
+            outline: none;
+        }
+        button{
+            margin-left: auto;
+            padding: 0.4rem 0.7rem;
+            font-weight: 600;
+            font-size: 0.870rem;
+        }
+    }
+
+    @media (max-width: 600px){
+        width: 90%;
+    }
+}

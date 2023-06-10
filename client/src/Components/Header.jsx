@@ -55,7 +55,7 @@ function Header() {
                         {login && <Link className='link' to='surveys'>My Surveys</Link>}
                         {login && <a href="/logout">Logout</a>}
                     </ul>
-                    <button onClick={handleShowMenu} className='hamburger'>Menu<i class={menuStyle}></i></button>
+                    <button onClick={handleShowMenu} className='hamburger'>Menu<i className={menuStyle}></i></button>
                 </div>
             </div> {/* END OF HEADER */}
         </div>

@@ -5,6 +5,7 @@ import SurveyPage from './Components/SurveyPage';
 import LandingPage from './Components/landingPage';
 import ConfirmSurveyPage from './Components/ConfirmSurvePage';
 import MySurveys from './Components/MySurveys';
+import Questionaire from './Components/Questionaire';
 
 function App() {
     return(
@@ -16,6 +17,7 @@ function App() {
                 <Route path='/surveys' element={<MySurveys />} />
                 <Route path='/survey/new' element={<SurveyPage />} />
                 <Route path='/survey/confirm' element={<ConfirmSurveyPage />} />
+                <Route path="/questionaire"  element={<Questionaire />} />
                 <Route path="*" element={<h1>Page Not Found!</h1>} />
             </Routes>
         </>
