@@ -7,6 +7,7 @@
   const keys = require("./config/keys");
   require("./models/User");
   require("./models/Surveys");
+  require("./models/Feedback");
   require("./services/passport");
   //common js modules
 

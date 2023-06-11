@@ -20,6 +20,9 @@ export default defineConfig({
       },
       "/getSurveys": {
         target: "http://localhost:5174"
+      },
+      "/feedback": {
+        target: "http://localhost:5174"
       }
     },
   },
