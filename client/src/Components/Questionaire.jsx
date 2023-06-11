@@ -8,11 +8,13 @@ function Questionaire() {
     const [data, setData] = useState([]);
     const [feedbacks, setFeedbacks] = useState({});
     const [loading, setLoading] = useState(false);
-
+    const [loadingQuestions, setLoadingQuestions] = useState(false);
     useEffect(() => {
+        setLoadingQuestions(true);
         const getData = async () => {
             const res = await axios.get('/getSurveys');
             const data = res.data[0];
+            setLoadingQuestions(false);
             //console.log("questions?:  ", data)
             setData(data);
         }
@@ -44,19 +46,23 @@ function Questionaire() {
         });
     }
 
-    
-    const renderedQuestions = data.survey?.questions?.map((question, index) => {
-        //check or add so client can choose whether it is a yes/no question or a textarea
-        return(
-            <div key={index}>
-                <h2><span>{index+1}.</span> {question}</h2>
-                <div>
-                    <textarea required name={`Response#${index+1}`} value={feedbacks[`Response#${index+1}`]}  onChange={handleChange} placeholder='Write your answer here...'></textarea>
+    let content;
+    if(loadingQuestions){
+        content = <div className='h-full w-full d-flex align-items-center justify-content-center'>Please wait...</div>
+    }else{
+        content = data.survey?.questions?.map((question, index) => {
+            //check or add so client can choose whether it is a yes/no question or a textarea
+            return(
+                <div key={index}>
+                    <h2><span>{index+1}.</span> {question}</h2>
+                    <div>
+                        <textarea required name={`Response#${index+1}`} value={feedbacks[`Response#${index+1}`]}  onChange={handleChange} placeholder='Write your answer here...'></textarea>
+                    </div>
                 </div>
-            </div>
-        );
-    });
-
+            );
+        });
+    }
+    
     let button;
     if(loading){
         button = <button className="btn btn-primary d-flex align-items-center" type="button" disabled>
@@ -76,7 +82,7 @@ function Questionaire() {
             </div>
                 
             <form onSubmit={handleSubmit}>
-                {renderedQuestions}
+                {content}
                 <div className='d-flex justify-content-flex-end'>
                     {button}
                 </div>
